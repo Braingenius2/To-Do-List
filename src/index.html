@@ -13,23 +13,19 @@
         <div id="to-do-list">
             <div class="list-title">
                 <h2>Today's To Do</h2>
-                <span class="material-icons-outlined">sync</span>
+                <i class="material-icons sync">sync</i>
             </div>
-            <div>
-                <form action="">
-                    <input 
-                      type="text"
-                      class="new-task"
-                      placeholder="Add to your list..."
-                      aria-label="Add to your list"
-                    />
-                    <button class="create-task" aria-label="create task">+</button>
-                </form>
-                <span class="material-icons-outlined">keyboard_return</span>
-            </div>
-
+            <form action="" class="add-task">
+                <input 
+                  type="text"
+                  class="new-task"
+                  placeholder="Add to your list..."
+                  aria-label="Add to your list"
+                />
+                <i class="material-icons return-key">keyboard_return</i>
+            </form>
             <ul class="tasks"></ul>
-            <div class="clear"><h2>Clear all completed</h2></div>
+            <div class="clear"><p class="clear-btn">Clear all completed</p></div>
         </div>
         
     </main>

@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wbpack Exercise</title>
+    <title>To Do List</title>
 <script defer src="main.js"></script></head>
 <body>
-    <h1>Hello webpack</h1>
+    <header></header>
+    <main>
+        <div id="to-do-list">
+            <div class="list-title">
+                <h2>Today's To Do</h2>
+                <img src="/images/sync_FILL0_wght400_GRAD0_opsz48.png" alt="sync">
+            </div>
+            <form action="" class="add-task">
+                <input 
+                  type="text"
+                  class="new-task"
+                  placeholder="Add to your list..."
+                  aria-label="Add to your list"
+                />
+                <img src="/images/keyboard_return_FILL0_wght400_GRAD0_opsz48.png" alt="return">
+            </form>
+            <ul class="tasks"></ul>
+            <div class="clear"><h2>Clear all completed</h2></div>
+        </div>
+    </main>
+    <footer></footer>
 </body>
 </html>

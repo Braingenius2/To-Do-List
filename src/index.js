@@ -24,14 +24,17 @@ function renderTasks() {
   tasks.forEach(function(task) {
     const li = document.createElement('li');
     li.classList.add('task');
+    tasksContainer.appendChild(li);
     const checkboxElement = document.createElement('input');
+    checkboxElement.type = 'checkbox';
     checkboxElement.index = task.index;
     checkboxElement.checked = task.completed;
-    tasksContainer.appendChild(checkboxElement);
+    li.appendChild(checkboxElement);
     const descriptionElement = document.createElement('p');
     descriptionElement.textContent = task.description;
     descriptionElement.classList.add('task-description');
-    tasksContainer.innerHTML += `<span class="material-icons-outlined">more_vert</span>`;
+    li.appendChild(descriptionElement);
+    li.innerHTML += `<i class="material-icons more-vert">more_vert</i>`;
     if (task.completed) {
       descriptionElement.classList.add('completed');
     }
