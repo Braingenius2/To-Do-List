@@ -34,7 +34,7 @@ function renderTasks() {
     descriptionElement.textContent = task.description;
     descriptionElement.classList.add('task-description');
     li.appendChild(descriptionElement);
-    li.innerHTML += `<i class='material-icons more-vert'>more_vert</i>`;
+    li.innerHTML += '<i class="material-icons more-vert">more_vert</i>';
     if (task.completed) {
       descriptionElement.classList.add('completed');
     }
