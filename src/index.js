@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import './style.css';
 
 const tasks = [
@@ -10,19 +9,19 @@ const tasks = [
   {
     description: 'Print articles',
     completed: false,
-    index:2,
+    index: 2,
   },
   {
     description: 'Build castle',
     completed: true,
     index: 3,
-  }
-]
+  },
+];
 
 function renderTasks() {
   tasks.sort((a, b) => a.index - b.index);
   const tasksContainer = document.querySelector('.tasks');
-  tasks.forEach(function(task) {
+  tasks.forEach((task) => {
     const li = document.createElement('li');
     li.classList.add('task');
     tasksContainer.appendChild(li);
@@ -35,7 +34,7 @@ function renderTasks() {
     descriptionElement.textContent = task.description;
     descriptionElement.classList.add('task-description');
     li.appendChild(descriptionElement);
-    li.innerHTML += `<i class="material-icons more-vert">more_vert</i>`;
+    li.innerHTML += `<i class='material-icons more-vert'>more_vert</i>`;
     if (task.completed) {
       descriptionElement.classList.add('completed');
     }
