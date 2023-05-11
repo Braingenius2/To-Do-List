@@ -20,6 +20,7 @@ const tasks = [
 ]
 
 function renderTasks() {
+  tasks.sort((a, b) => a.index - b.index);
   const tasksContainer = document.querySelector('.tasks');
   tasks.forEach(function(task) {
     const li = document.createElement('li');
