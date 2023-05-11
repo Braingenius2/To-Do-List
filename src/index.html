@@ -3,9 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wbpack Exercise</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <title>To Do List</title>
 </head>
 <body>
-    <h1>Hello webpack!</h1>
+    <header></header>
+    <main>
+        <div id="to-do-list">
+            <div class="list-title">
+                <h2>Today's To Do</h2>
+                <span class="material-icons-outlined">sync</span>
+            </div>
+            <div>
+                <form action="">
+                    <input 
+                      type="text"
+                      class="new-task"
+                      placeholder="Add to your list..."
+                      aria-label="Add to your list"
+                    />
+                    <button class="create-task" aria-label="create task">+</button>
+                </form>
+                <span class="material-icons-outlined">keyboard_return</span>
+            </div>
+
+            <ul class="tasks"></ul>
+            <div class="clear"><h2>Clear all completed</h2></div>
+        </div>
+        
+    </main>
+    <footer></footer>
 </body>
 </html>

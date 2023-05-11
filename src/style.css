@@ -1,7 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Open+Sans:wght@300&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+}
+
 body {
   background-color: bisque;
 }
 
-.hello {
-  color: red;
+li.completed {
+  text-decoration: line-through;
 }
