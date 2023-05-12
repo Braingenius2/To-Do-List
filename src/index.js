@@ -19,6 +19,7 @@ const tasks = [
   // },
 ];
 
+// Implement function to render or display tasks in the list container
 function renderTasks() {
   tasks.sort((a, b) => a.index - b.index);
   const tasksContainer = document.querySelector('.tasks');
@@ -43,3 +44,5 @@ function renderTasks() {
 }
 
 renderTasks();
+
+
