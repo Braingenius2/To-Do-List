@@ -22,7 +22,10 @@ export default class Tasks {
 
   editTask(newDescription, index) {
     this.tasks = JSON.parse(localStorage.getItem('tasks'));
-    
+    const objectIndex = this.tasks.findIndex(task => task.index === index);
+    if (objectIndex !== -1) {
+      this.tasks[index].description = newDescription;
+    }
   }
 
 }
