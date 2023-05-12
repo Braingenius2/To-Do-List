@@ -17,6 +17,11 @@ export default class Tasks {
   deleteTask(index) {
     this.tasks = JSON.parse(localStorage.getItem('tasks'));
     this.tasks = this.tasks.filter((task) => task.index !== parseInt(index, 10));
+
+    // update index of remaining objects so they represent the current list order
+    this.tasks.forEach(task => {
+      task.index = this.tasks.length;
+    });
     localStorage.setItem('tasks', JSON.stringify(this.tasks))
   }
 
