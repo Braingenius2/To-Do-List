@@ -1,28 +1,15 @@
-import './style.css';
-import Tasks from './tasks.js';
+export default class Tasks {
+  constructor() {
+    this.tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+  }
 
-const tasks = [
-  // {
-  //   description: 'Go to market',
-  //   completed: true,
-  //   index: 1,
-  // },
-  // {
-  //   description: 'Print articles',
-  //   completed: false,
-  //   index: 2,
-  // },
-  // {
-  //   description: 'Build castle',
-  //   completed: true,
-  //   index: 3,
-  // },
-];
-
-function renderTasks() {
-  tasks.sort((a, b) => a.index - b.index);
-  const tasksContainer = document.querySelector('.tasks');
-  tasks.forEach((task) => {
+  addTask(description) {
+    const task = {
+      description: description,
+      completed: false,
+      index: this.tasks.length,
+    };
+    const tasksContainer = document.querySelector('.tasks');
     const li = document.createElement('li');
     li.classList.add('task');
     tasksContainer.appendChild(li);
@@ -36,10 +23,14 @@ function renderTasks() {
     descriptionElement.classList.add('task-description');
     li.appendChild(descriptionElement);
     li.innerHTML += '<i class="material-icons more-vert">more_vert</i>';
-    if (task.completed) {
-      descriptionElement.classList.add('completed');
-    }
-  });
-}
+  }
 
-renderTasks();
+  deleteTask(index) {
+
+  }
+
+  editTask(index) {
+
+  }
+
+}
