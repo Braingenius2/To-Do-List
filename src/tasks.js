@@ -20,7 +20,42 @@ export default class Tasks {
     descriptionElement.textContent = task.description;
     descriptionElement.classList.add('task-description');
     li.appendChild(descriptionElement);
+
+    // Implement a click event listener on the description element
+    descriptionElement.addEventListener('click', () => {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.value = text;
+      descriptionElement.textContent = '';
+      descriptionElement.appendChild(input);
+      input.focus();
+      input.addEventListener('blur', () => {
+        const newDescription = input.value;
+        const index = task.index;
+        this.editTask(newDescription, index);
+
+        // Replace deleteIcon with 3 vertical dots
+        const deleteIcon = document.querySelector('.delete');
+        deleteIcon.style.display = 'none';
+        const moreVert = document.querySelector('.more-vert');
+        moreVert.style.display = 'block';
+
+        // Toggle yellow background
+        li.classList.toggle('clicked-task');
+      });
+
+      // Also replace 3 vertical dots icon in the li container with a delete icon
+      const deleteIcon = document.querySelector('.delete');
+      deleteIcon.style.display = 'block';
+      const moreVert = document.querySelector('.more-vert');
+      moreVert.style.display = 'none';
+      
+
+      // Also toggle yellow background
+      li.classList.toggle('clicked-task');
+    });
     li.innerHTML += '<i class="material-icons more-vert">more_vert</i>';
+    li.innerHTML += '<i class="material-icons delete">delete</i>';
     if (task.completed) {
       descriptionElement.classList.add('completed');
     }
@@ -54,6 +89,7 @@ export default class Tasks {
     const objectIndex = this.tasks.findIndex(task => task.index === index);
     if (objectIndex !== -1) {
       this.tasks[index].description = newDescription;
+      localStorage.setItem('tasks', JSON.stringify(this.tasks));
     }
   }
 
