@@ -7,6 +7,7 @@ export default class Tasks {
   renderTasks() {
   this.tasks.sort((a, b) => a.index - b.index);
   const tasksContainer = document.querySelector('.tasks');
+  tasksContainer.innerHTML = '';
   this.tasks.forEach((task) => {
     const li = document.createElement('li');
     li.classList.add('task');

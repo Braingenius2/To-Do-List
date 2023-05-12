@@ -1,13 +1,11 @@
 import './style.css';
 import Tasks from './tasks.js';
 
-const tasks = [
+let tasks = [
 ];
 
 // populate tasks array with data from local storage
 tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
-
-// Implement doubletap on task to edit task description
 
 // Create a new Tasks object instance
 const tasksObj = new Tasks();
@@ -29,17 +27,6 @@ newTaskElement.addEventListener('keydown', (event) => {
     // render an updated to do list
     tasksObj.renderTasks();
   }
-});
-newTaskElement.addEventListener('click', () => {
-  // Get the value from the input field
-  const description = newTaskElement.value;
-  tasksObj.addTask(description);
-
-  // Clear the input field
-  newTaskElement.value = '';
-
-  // render an updated to do list
-  tasksObj.renderTasks();
 });
 
 // Implement a click event listener on the description element appropriately in tasks.js
