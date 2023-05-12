@@ -1,21 +1,21 @@
 import './style.css';
 
 const tasks = [
-  {
-    description: 'Go to market',
-    completed: true,
-    index: 1,
-  },
-  {
-    description: 'Print articles',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'Build castle',
-    completed: true,
-    index: 3,
-  },
+  // {
+  //   description: 'Go to market',
+  //   completed: true,
+  //   index: 1,
+  // },
+  // {
+  //   description: 'Print articles',
+  //   completed: false,
+  //   index: 2,
+  // },
+  // {
+  //   description: 'Build castle',
+  //   completed: true,
+  //   index: 3,
+  // },
 ];
 
 function renderTasks() {
