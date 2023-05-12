@@ -3,13 +3,37 @@ export default class Tasks {
     this.tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
   }
 
+  // Implement method to render or display tasks in the list container
+  renderTasks() {
+  this.tasks.sort((a, b) => a.index - b.index);
+  const tasksContainer = document.querySelector('.tasks');
+  this.tasks.forEach((task) => {
+    const li = document.createElement('li');
+    li.classList.add('task');
+    tasksContainer.appendChild(li);
+    const checkboxElement = document.createElement('input');
+    checkboxElement.type = 'checkbox';
+    checkboxElement.index = task.index;
+    checkboxElement.checked = task.completed;
+    li.appendChild(checkboxElement);
+    const descriptionElement = document.createElement('p');
+    descriptionElement.textContent = task.description;
+    descriptionElement.classList.add('task-description');
+    li.appendChild(descriptionElement);
+    li.innerHTML += '<i class="material-icons more-vert">more_vert</i>';
+    if (task.completed) {
+      descriptionElement.classList.add('completed');
+    }
+  });
+  }
+
   addTask(description) {
     const task = {
       description: description,
       completed: false,
       index: this.tasks.length,
     };
-    this.tasks = JSON.parse(localStorage.getItem('tasks'));
+    // this.tasks = JSON.parse(localStorage.getItem('tasks'));
     this.tasks.push(task);
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
