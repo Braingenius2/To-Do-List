@@ -24,37 +24,52 @@ export default class Tasks {
 
     // Implement a click event listener on the description element
     descriptionElement.addEventListener('click', () => {
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.value = task.description;
-      descriptionElement.textContent = '';
-      descriptionElement.appendChild(input);
-      input.focus();
-      input.addEventListener('blur', () => {
-        const newDescription = input.value;
-        const index = task.index;
-        this.editTask(newDescription, index);
+      // Set the contentEditable property to true and focus on the element
+      descriptionElement.contentEditable = true;
+      descriptionElement.focus();
 
-        // Replace deleteIcon with 3 vertical dots
-        const rightElement = document.querySelector('.delete-container');
-        const deleteIcon = rightElement.querySelector('.delete');
-        deleteIcon.style.display = 'none';
-        const moreVert = rightElement.querySelector('.more-vert');
-        moreVert.style.display = 'block';
+      // Store original description in a variable, in case user cancels edit
+      const originalDescription = descriptionElement.textContent;
 
-        // Toggle yellow background
-        li.classList.toggle('clicked-task');
+      // Add  blur event listener to save the edited task description
+      descriptionElement.addEventListener('blur', () => {
+        // Get the new description from the element
+        const newDescription = descriptionElement.textContent;
+
+        // Set the contentEditable property back to false
+        descriptionElement.contentEditable = false;
+
+        // If new description isn't empty and different from the original
+        // Update task and re-render tasks
+        if (newDescription.trim() !== '' && newDescription !== originalDescription) {
+          const index = task.index;
+          this.editTask(newDescription, index);
+          this.renderTasks();
+        } else {
+          descriptionElement.textContent = originalDescription;
+          this.renderTasks();
+        }
+      });
+
+      // Add keydone event listener if enter key is used by user to save the edited task description
+      descriptionElement.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          
+          // Trigger the blur event to save the edited task description
+          descriptionElement.blur();
+        }
       });
 
       // Also replace 3 vertical dots icon in the li container with a delete icon
-      const rightElement = document.querySelector('.delete-container');
+      const rightElement = li.querySelector('.delete-container');
       const deleteIcon = rightElement.querySelector('.delete');
       deleteIcon.style.display = 'block';
       const moreVert = rightElement.querySelector('.more-vert');
       moreVert.style.display = 'none';
 
       // Also toggle yellow background
-      li.classList.toggle('clicked-task');
+      li.classList.add('clicked-task');
     });
     const rightElement = document.createElement('div');
     rightElement.classList.add('delete-container');

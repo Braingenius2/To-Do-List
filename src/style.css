@@ -16,6 +16,10 @@ main {
   align-items: center;
 }
 
+[contenteditable] {
+  border: none;
+}
+
 .delete {
   display: none;
   color: #4d4c4c6a;
@@ -56,6 +60,10 @@ h2 {
   justify-content: space-between;
   padding: 12px 8px;
   border-bottom: 2px solid #4d4c4c21;
+}
+
+.edit-task-description {
+  border: none;
 }
 
 .add-task {
