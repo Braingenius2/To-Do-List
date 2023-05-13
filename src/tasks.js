@@ -78,10 +78,13 @@ export default class Tasks {
     rightElement.classList.add('delete-container');
     rightElement.dataset.index = task.index;
     li.appendChild(rightElement);
-    rightElement.innerHTML += '<i class="material-icons more-vert">more_vert</i>';
-    rightElement.innerHTML += '<i class="material-icons delete">delete</i>';
+    rightElement.innerHTML = `<i class="material-icons more-vert">more_vert</i><i class="material-icons delete">delete</i>`;
     
     // Add click event listener to deleteIcon
+    //first deactivate click on rightElement
+    rightElement.addEventListener('click', (event) => {
+      event.preventDefault();
+    });
     const deleteIcon = rightElement.querySelector('.delete');
     deleteIcon.addEventListener('click', (event) => {
       event.preventDefault();
@@ -117,7 +120,6 @@ export default class Tasks {
   }
 
   editTask(newDescription, index) {
-    this.tasks = JSON.parse(localStorage.getItem('tasks'));
     const objectIndex = this.tasks.findIndex(task => task.index === index);
     if (objectIndex !== -1) {
       this.tasks[objectIndex].description = newDescription;
