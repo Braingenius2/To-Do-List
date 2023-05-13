@@ -28,6 +28,9 @@ export default class Tasks {
       descriptionElement.contentEditable = true;
       descriptionElement.focus();
 
+      // Remove outline from the element
+      descriptionElement.style.outline = 'none';
+
       // Store original description in a variable, in case user cancels edit
       const originalDescription = descriptionElement.textContent;
 
@@ -77,6 +80,13 @@ export default class Tasks {
     li.appendChild(rightElement);
     rightElement.innerHTML += '<i class="material-icons more-vert">more_vert</i>';
     rightElement.innerHTML += '<i class="material-icons delete">delete</i>';
+
+    // Add click event listener to deleteIcon
+    const deleteIcon = li.querySelector('delete');
+    deleteIcon.addEventListener('click', () => {
+      this.deleteTask(task.index);
+      this.renderTasks();
+    });
     if (task.completed) {
       descriptionElement.classList.add('completed');
     }

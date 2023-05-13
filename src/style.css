@@ -16,10 +16,6 @@ main {
   align-items: center;
 }
 
-[contenteditable] {
-  border: none;
-}
-
 .delete {
   display: none;
   color: #4d4c4c6a;
