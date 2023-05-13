@@ -22,3 +22,14 @@ newTaskElement.addEventListener('keydown', (event) => {
     tasksObj.renderTasks();
   }
 });
+
+// // implement a click event listener on all delete icons
+// const deleteIcons = document.querySelectorAll('.delete');
+//   deleteIcons.forEach((deleteIcon) => {
+//     deleteIcon.addEventListener('click', (event) => {
+//       const parent = event.target.parentNode;
+//       const index = parent.dataset.index; // Get the task index from the parent element
+//       tasksObj.tasks.deletetask(parseInt(index, 10)); // Convert the index to an integer before passing to deleteTask
+//       tasksObj.renderTasks();
+//     });
+//   });

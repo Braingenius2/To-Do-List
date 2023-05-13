@@ -22,10 +22,45 @@ export default class Tasks {
       descriptionElement.textContent = task.description;
       descriptionElement.classList.add('task-description');
       li.appendChild(descriptionElement);
+      const rightElement = document.createElement('div');
+      rightElement.classList.add('delete-container');
+      rightElement.dataset.index = task.index;
+      li.appendChild(rightElement);
+      rightElement.innerHTML = '<i class="material-icons more-vert">more_vert</i><div class="delete"><i class="material-icons">delete</i></div>';
+      // // Add click event listener to deleteIcon
+      // // first deactivate click on rightElement
+      // rightElement.addEventListener('click', (event) => {
+      //   event.preventDefault();
+      //   event.stopPropagation(); // Add this line to stop event propagation
+      // });
+      // const deleteIcon = rightElement.querySelector('.delete');
+      // deleteIcon.addEventListener('click', (event) => {
+      //   event.preventDefault();
+      //   event.stopPropagation(); // Add this line to stop event propagation
+      //   this.deleteTask(task.index);
+      //   this.renderTasks();
+      // });
 
       // Implement a click event listener on the description element
-      descriptionElement.addEventListener('click', () => {
-      // Set the contentEditable property to true and focus on the element
+      descriptionElement.addEventListener('click', (event) => {
+        // Replace 3 vertical dots icon in the li container with a delete icon
+        // const rightElement = li.querySelector('.delete-container');
+        const deleteIcon = rightElement.querySelector('.delete');
+        deleteIcon.style.display = 'block';
+        const moreVert = rightElement.querySelector('.more-vert');
+        moreVert.style.display = 'none';
+
+        // Toggle yellow background
+        li.classList.add('clicked-task');
+
+        // Check if the delete icon is clicked
+        if (event.target.closest('.delete')) {
+          this.deleteTask(task.index);
+          this.renderTasks();
+          return;
+        }
+
+        // Set the contentEditable property to true and focus on the element
         descriptionElement.contentEditable = true;
         descriptionElement.focus();
 
@@ -63,34 +98,8 @@ export default class Tasks {
             descriptionElement.blur();
           }
         });
-
-        // Also replace 3 vertical dots icon in the li container with a delete icon
-        const rightElement = li.querySelector('.delete-container');
-        const deleteIcon = rightElement.querySelector('.delete');
-        deleteIcon.style.display = 'block';
-        const moreVert = rightElement.querySelector('.more-vert');
-        moreVert.style.display = 'none';
-
-        // Also toggle yellow background
-        li.classList.add('clicked-task');
       });
-      const rightElement = document.createElement('div');
-      rightElement.classList.add('delete-container');
-      rightElement.dataset.index = task.index;
-      li.appendChild(rightElement);
-      rightElement.innerHTML = '<i class="material-icons more-vert">more_vert</i><i class="material-icons delete">delete</i>';
-
-      // Add click event listener to deleteIcon
-      // first deactivate click on rightElement
-      rightElement.addEventListener('click', (event) => {
-        event.preventDefault();
-      });
-      const deleteIcon = rightElement.querySelector('.delete');
-      deleteIcon.addEventListener('click', (event) => {
-        event.preventDefault();
-        this.deleteTask(task.index);
-        this.renderTasks();
-      });
+      
 
       if (task.completed) {
         descriptionElement.classList.add('completed');
@@ -118,14 +127,6 @@ export default class Tasks {
     }
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
-
-  // deleteTask(index) {
-  //   const taskToDelete = this.tasks.findIndex(task => task.index === index);
-  //   if (taskToDelete !== -1) {
-  //     this.tasks = this.tasks.filter((task) => task == taskToDelete);
-  //     localStorage.setItem('tasks', JSON.stringify(this.tasks));
-  //   }
-  // }
 
   editTask(newDescription, index) {
     const objectIndex = this.tasks.findIndex((task) => task.index === index);
