@@ -3,43 +3,6 @@ export default class Tasks {
     this.tasks = JSON.parse(localStorage.getItem('tasks')) || [];
   }
 
-  // renderTasks() {
-  //   this.sortTasks();
-  //   this.updateLocalStorage();
-  //   const tasksContainer = document.querySelector('.tasks');
-  //   tasksContainer.innerHTML = '';
-  //   this.tasks.forEach((task) => {
-  //     const li = document.createElement('li');
-  //     li.classList.add('task');
-  //     li.innerHTML = `
-  //       <input type="checkbox" data-index="${task.index}" ${task.completed ? 'checked' : ''}>
-  //       <p class="task-description ${task.completed ? 'completed' : ''}">${task.description}</p>
-  //       <div class="delete-container" data-index="${task.index}">
-  //         <i class="material-icons more-vert">more_vert</i>
-  //         <div class="delete"><i class="material-icons">delete</i></div>
-  //       </div>
-  //     `;
-  //     tasksContainer.appendChild(li);
-
-  //     const checkboxElement = li.querySelector('input[type="checkbox"]');
-  //     checkboxElement.addEventListener('change', () => {
-  //       this.toggleTaskCompletion(task.index);
-  //       this.renderTasks();
-  //     });
-
-  //     const descriptionElement = li.querySelector('.task-description');
-  //     descriptionElement.addEventListener('click', () => {
-  //       this.editTaskDescription(descriptionElement, task.index);
-  //     });
-
-  //     const deleteIcon = li.querySelector('.delete');
-  //     deleteIcon.addEventListener('click', () => {
-  //       this.deleteTask(task.index);
-  //       this.renderTasks();
-  //     });
-  //   });
-  // }
-
   renderTasks() {
     this.sortTasks();
     this.updateLocalStorage();
@@ -57,19 +20,19 @@ export default class Tasks {
         </div>
       `;
       tasksContainer.appendChild(li);
-  
+
       const checkboxElement = li.querySelector('input[type="checkbox"]');
       checkboxElement.addEventListener('change', () => {
         this.toggleTaskCompletion(task.index);
         this.updateLocalStorage();
         this.renderTasks();
       });
-  
+
       const descriptionElement = li.querySelector('.task-description');
       descriptionElement.addEventListener('click', () => {
         this.editTaskDescription(descriptionElement, task.index);
       });
-  
+
       const deleteIcon = li.querySelector('.delete');
       deleteIcon.addEventListener('click', () => {
         this.deleteTask(task.index);
@@ -77,7 +40,7 @@ export default class Tasks {
         this.renderTasks();
       });
     });
-  
+
     const clearCompletedElement = document.querySelector('.clear');
     clearCompletedElement.addEventListener('click', () => {
       this.tasks = this.tasks.filter((task) => !task.completed);
@@ -86,7 +49,6 @@ export default class Tasks {
       this.renderTasks();
     });
   }
-  
 
   addTask(description) {
     const task = {
@@ -101,28 +63,6 @@ export default class Tasks {
     this.tasks = this.tasks.filter((task) => task.index !== index);
     this.updateTaskIndexes();
   }
-
-  // editTaskDescription(descriptionElement, index) {
-  //   descriptionElement.contentEditable = true;
-  //   descriptionElement.focus();
-  //   const originalDescription = descriptionElement.textContent;
-  //   descriptionElement.addEventListener('blur', () => {
-  //     const newDescription = descriptionElement.textContent.trim();
-  //     if (newDescription && newDescription !== originalDescription) {
-  //       this.tasks.find((task) => task.index === index).description = newDescription;
-  //       this.updateLocalStorage();
-  //     } else {
-  //       descriptionElement.textContent = originalDescription;
-  //     }
-  //     descriptionElement.contentEditable = false;
-  //   });
-  //   descriptionElement.addEventListener('keydown', (event) => {
-  //     if (event.key === 'Enter') {
-  //       event.preventDefault();
-  //       descriptionElement.blur();
-  //     }
-  //   });
-  // }
 
   editTaskDescription(descriptionElement, index) {
     const li = descriptionElement.closest('.task');
