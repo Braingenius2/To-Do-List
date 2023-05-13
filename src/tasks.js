@@ -6,6 +6,7 @@ export default class Tasks {
   // Implement method to render or display tasks in the list container
   renderTasks() {
   this.tasks.sort((a, b) => a.index - b.index);
+  localStorage.setItem('tasks', JSON.stringify(this.tasks));
   const tasksContainer = document.querySelector('.tasks');
   tasksContainer.innerHTML = '';
   this.tasks.forEach((task) => {
@@ -14,7 +15,7 @@ export default class Tasks {
     tasksContainer.appendChild(li);
     const checkboxElement = document.createElement('input');
     checkboxElement.type = 'checkbox';
-    checkboxElement.index = task.index;
+    checkboxElement.dataset.index = task.index;
     checkboxElement.checked = task.completed;
     li.appendChild(checkboxElement);
     const descriptionElement = document.createElement('p');
@@ -45,8 +46,7 @@ export default class Tasks {
         // If new description isn't empty and different from the original
         // Update task and re-render tasks
         if (newDescription.trim() !== '' && newDescription !== originalDescription) {
-          const index = task.index;
-          this.editTask(newDescription, index);
+          this.editTask(newDescription, task.index);
           this.renderTasks();
         } else {
           descriptionElement.textContent = originalDescription;
@@ -54,7 +54,7 @@ export default class Tasks {
         }
       });
 
-      // Add keydone event listener if enter key is used by user to save the edited task description
+      // Add keydown event listener if enter key is used by user to save the edited task description
       descriptionElement.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
           event.preventDefault();
@@ -80,13 +80,15 @@ export default class Tasks {
     li.appendChild(rightElement);
     rightElement.innerHTML += '<i class="material-icons more-vert">more_vert</i>';
     rightElement.innerHTML += '<i class="material-icons delete">delete</i>';
-
+    
     // Add click event listener to deleteIcon
-    const deleteIcon = li.querySelector('delete');
-    deleteIcon.addEventListener('click', () => {
+    const deleteIcon = rightElement.querySelector('.delete');
+    deleteIcon.addEventListener('click', (event) => {
+      event.preventDefault();
       this.deleteTask(task.index);
       this.renderTasks();
     });
+
     if (task.completed) {
       descriptionElement.classList.add('completed');
     }
@@ -97,7 +99,7 @@ export default class Tasks {
     const task = {
       description: description,
       completed: false,
-      index: this.tasks.length,
+      index: this.tasks.length + 1,
     };
     // this.tasks = JSON.parse(localStorage.getItem('tasks'));
     this.tasks.push(task);
@@ -105,13 +107,12 @@ export default class Tasks {
   }
 
   deleteTask(index) {
-    this.tasks = JSON.parse(localStorage.getItem('tasks'));
-    this.tasks = this.tasks.filter((task) => task.index !== parseInt(index, 10));
+    this.tasks = this.tasks.filter((task) => task.index !== index);
 
     // update index of remaining objects so they represent the current list order
-    this.tasks.forEach(task => {
-      task.index = this.tasks.length;
-    });
+    for (let i = 0; i < this.tasks.length; i++) {
+      this.tasks[i].index = i + 1;
+    }
     localStorage.setItem('tasks', JSON.stringify(this.tasks))
   }
 
@@ -119,7 +120,7 @@ export default class Tasks {
     this.tasks = JSON.parse(localStorage.getItem('tasks'));
     const objectIndex = this.tasks.findIndex(task => task.index === index);
     if (objectIndex !== -1) {
-      this.tasks[index].description = newDescription;
+      this.tasks[objectIndex].description = newDescription;
       localStorage.setItem('tasks', JSON.stringify(this.tasks));
     }
   }
