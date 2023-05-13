@@ -119,6 +119,14 @@ export default class Tasks {
     localStorage.setItem('tasks', JSON.stringify(this.tasks))
   }
 
+  // deleteTask(index) {
+  //   const taskToDelete = this.tasks.findIndex(task => task.index === index);
+  //   if (taskToDelete !== -1) {
+  //     this.tasks = this.tasks.filter((task) => task == taskToDelete);
+  //     localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  //   }
+  // }
+
   editTask(newDescription, index) {
     const objectIndex = this.tasks.findIndex(task => task.index === index);
     if (objectIndex !== -1) {
