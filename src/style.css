@@ -97,7 +97,7 @@ h2 {
   background-color: #fffeca;
 }
 
-li.completed {
+.completed {
   text-decoration: line-through;
 }
 
@@ -112,4 +112,9 @@ li.completed {
   justify-content: center;
   padding: 16px 0;
   background-color: #4d4c4c21;
+}
+
+.clear-btn:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
