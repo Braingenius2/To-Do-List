@@ -83,7 +83,7 @@ export default class Tasks {
     deleteIcon.style.display = 'block';
     const moreVert = li.querySelector('.more-vert');
     moreVert.style.display = 'none';
-  
+
     descriptionElement.contentEditable = true;
     descriptionElement.focus();
     const originalDescription = descriptionElement.textContent;
@@ -106,13 +106,12 @@ export default class Tasks {
         descriptionElement.blur();
       }
     });
-  
+
     deleteIcon.addEventListener('click', () => {
       this.deleteTask(index);
       this.renderTasks();
     });
   }
-  
 
   toggleTaskCompletion(index) {
     const task = this.tasks.find((task) => task.index === index);
