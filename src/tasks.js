@@ -26,7 +26,7 @@ export default class Tasks {
     descriptionElement.addEventListener('click', () => {
       const input = document.createElement('input');
       input.type = 'text';
-      input.value = text;
+      input.value = task.description;
       descriptionElement.textContent = '';
       descriptionElement.appendChild(input);
       input.focus();
@@ -36,9 +36,10 @@ export default class Tasks {
         this.editTask(newDescription, index);
 
         // Replace deleteIcon with 3 vertical dots
-        const deleteIcon = document.querySelector('.delete');
+        const rightElement = document.querySelector('.delete-container');
+        const deleteIcon = rightElement.querySelector('.delete');
         deleteIcon.style.display = 'none';
-        const moreVert = document.querySelector('.more-vert');
+        const moreVert = rightElement.querySelector('.more-vert');
         moreVert.style.display = 'block';
 
         // Toggle yellow background
@@ -46,17 +47,21 @@ export default class Tasks {
       });
 
       // Also replace 3 vertical dots icon in the li container with a delete icon
-      const deleteIcon = document.querySelector('.delete');
+      const rightElement = document.querySelector('.delete-container');
+      const deleteIcon = rightElement.querySelector('.delete');
       deleteIcon.style.display = 'block';
-      const moreVert = document.querySelector('.more-vert');
+      const moreVert = rightElement.querySelector('.more-vert');
       moreVert.style.display = 'none';
-      
 
       // Also toggle yellow background
       li.classList.toggle('clicked-task');
     });
-    li.innerHTML += '<i class="material-icons more-vert">more_vert</i>';
-    li.innerHTML += '<i class="material-icons delete">delete</i>';
+    const rightElement = document.createElement('div');
+    rightElement.classList.add('delete-container');
+    rightElement.dataset.index = task.index;
+    li.appendChild(rightElement);
+    rightElement.innerHTML += '<i class="material-icons more-vert">more_vert</i>';
+    rightElement.innerHTML += '<i class="material-icons delete">delete</i>';
     if (task.completed) {
       descriptionElement.classList.add('completed');
     }

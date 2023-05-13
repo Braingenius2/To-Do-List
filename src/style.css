@@ -28,7 +28,8 @@ main {
 }
 
 .sync:hover,
-.delete:hover {
+.delete:hover,
+.return-key:hover {
   color: #4d4c4ce0;
   cursor: pointer;
 }
@@ -36,10 +37,6 @@ main {
 .more-vert:hover {
   color: #4d4c4ce0;
   cursor: all-scroll;
-}
-
-.return-key:hover {
-  cursor: pointer;
 }
 
 h2 {
@@ -101,7 +98,7 @@ li.completed {
 }
 
 .tasks .task .task-description {
-  width: 80%;
+  width: 100%;
 }
 
 .clear {
