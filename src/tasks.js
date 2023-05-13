@@ -49,7 +49,7 @@ export default class Tasks {
       this.renderTasks();
     });
   }
-
+  
   addTask(description) {
     const task = {
       description,
@@ -73,7 +73,7 @@ export default class Tasks {
     moreVert.style.display = 'none';
 
     descriptionElement.contentEditable = true;
-    descriptionElement.focus();
+    // descriptionElement.focus();
     const originalDescription = descriptionElement.textContent;
     descriptionElement.addEventListener('blur', () => {
       const newDescription = descriptionElement.textContent.trim();
@@ -100,6 +100,7 @@ export default class Tasks {
       this.renderTasks();
     });
   }
+  
 
   toggleTaskCompletion(index) {
     const task = this.tasks.find((task) => task.index === index);
