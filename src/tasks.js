@@ -110,7 +110,7 @@ export default class Tasks {
   }
 
   deleteTask(index) {
-    this.tasks = this.tasks.filter((task) => task.index !== index);
+    this.tasks = this.tasks.filter((task) => task.index !== parseInt(index));
 
     // update index of remaining objects so they represent the current list order
     for (let i = 0; i < this.tasks.length; i += 1) {
