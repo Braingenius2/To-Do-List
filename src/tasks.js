@@ -9,7 +9,7 @@ export default class Tasks {
     const tasksContainer = document.querySelector('.tasks');
     tasksContainer.innerHTML = '';
     this.tasks.forEach((task) => {
-      const li = document.createElement('li');
+      let li = document.createElement('li');
       li.classList.add('task');
       li.innerHTML = `
         <input type="checkbox" data-index="${task.index}" ${task.completed ? 'checked' : ''}>
@@ -71,10 +71,33 @@ export default class Tasks {
     deleteIcon.style.display = 'block';
     const moreVert = li.querySelector('.more-vert');
     moreVert.style.display = 'none';
-
+  
     descriptionElement.contentEditable = true;
-    // descriptionElement.focus();
     const originalDescription = descriptionElement.textContent;
+    descriptionElement.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        const newDescription = descriptionElement.textContent.trim();
+        if (newDescription && newDescription !== originalDescription) {
+          this.tasks.find((task) => task.index === index).description = newDescription;
+          this.updateLocalStorage();
+        } else {
+          descriptionElement.textContent = originalDescription;
+        }
+        descriptionElement.contentEditable = false;
+        li.classList.remove('clicked-task');
+        deleteIcon.style.display = 'none';
+        moreVert.style.display = 'block';
+      } else if (event.key === 'Escape') {
+        event.preventDefault();
+        descriptionElement.textContent = originalDescription;
+        descriptionElement.contentEditable = false;
+        li.classList.remove('clicked-task');
+        deleteIcon.style.display = 'none';
+        moreVert.style.display = 'block';
+      }
+    });
+  
     descriptionElement.addEventListener('blur', () => {
       const newDescription = descriptionElement.textContent.trim();
       if (newDescription && newDescription !== originalDescription) {
@@ -88,18 +111,8 @@ export default class Tasks {
       deleteIcon.style.display = 'none';
       moreVert.style.display = 'block';
     });
-    descriptionElement.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        descriptionElement.blur();
-      }
-    });
-
-    deleteIcon.addEventListener('click', () => {
-      this.deleteTask(index);
-      this.renderTasks();
-    });
   }
+  
   
 
   toggleTaskCompletion(index) {
