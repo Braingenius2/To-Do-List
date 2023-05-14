@@ -16,10 +16,27 @@ main {
   align-items: center;
 }
 
+.delete {
+  display: none;
+  color: #4d4c4c6a;
+}
+
 .sync,
 .return-key,
 .more-vert {
   color: #4d4c4c6a;
+}
+
+.sync:hover,
+.delete:hover,
+.return-key:hover {
+  color: #4d4c4ce0;
+  cursor: pointer;
+}
+
+.more-vert:hover {
+  color: #4d4c4ce0;
+  cursor: all-scroll;
 }
 
 h2 {
@@ -39,6 +56,10 @@ h2 {
   justify-content: space-between;
   padding: 12px 8px;
   border-bottom: 2px solid #4d4c4c21;
+}
+
+.edit-task-description {
+  border: none;
 }
 
 .add-task {
@@ -72,12 +93,16 @@ h2 {
   border-bottom: 2px solid #4d4c4c21;
 }
 
-li.completed {
+.tasks .task.clicked-task {
+  background-color: #fffeca;
+}
+
+.completed {
   text-decoration: line-through;
 }
 
 .tasks .task .task-description {
-  width: 80%;
+  width: 100%;
 }
 
 .clear {
@@ -87,4 +112,9 @@ li.completed {
   justify-content: center;
   padding: 16px 0;
   background-color: #4d4c4c21;
+}
+
+.clear-btn:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }

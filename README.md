@@ -1,8 +1,11 @@
-# To-Do-List
+# My To Do List
 <a name="readme-top"></a>
 
 <div align="center">
-  <h3><b>Awesome Books with ES6</b></h3>
+  <img src="http://img.scoop.it/cKEZkd1vEUhIUuoyVpYuQjl72eJkfbmt4t8yenImKBXEejxNn4ZJNZ2ss5Ku7Cxt" alt="logo" width="140"  height="auto" />
+  <br/>
+
+  <h3><b>My To-Do List</b></h3>
 
 </div>
 
@@ -31,9 +34,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 To Do List - <a name="about-project"></a>
+# 📖 My To Do List- <a name="about-project"></a>
 
-**To Do List** 
+**My To Do List** is a project to create a minimalist to-do list app
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -52,10 +55,9 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **a collection that keeps a list of books**
+- **Minimalist design**
 - **Button interactions (i.e. hover, etc.)**
-- **data is preserved in the browser's memory by using localStorage**
-- **use luxon to gt the current date**
+- **Responsive for both mobile and desktop screen**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -63,7 +65,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- N/A
+- [Live Demo Link here](https://braingenius2.github.io/To-Do-List/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -94,7 +96,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone 
+  git clone git@github.com:Braingenius2/To-Do-List.git
 ```
 
 ### Install
@@ -111,7 +113,7 @@ Example command:
 --->
 
 ### Usage
-"Awesome books" is a simple website that displays a list of books and allows you to add and remove books from that list. 
+You can use this to boost your daily productivity levels
 
 
 
@@ -137,7 +139,7 @@ Example command:
 
 ### Deployment
 
-N/A
+You can deploy this project using Github pages:
 
 <!--
 Example:
@@ -153,12 +155,11 @@ Example:
 
 ## 👥 Authors <a name="authors"></a>
 
+👤 **Author1**
 
-👤 **Author2**
-
-- GitHub: [@beteland123](https://github.com/beteland123)
-- Twitter: [@twitterhandle]()
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/betel-andarge-1b9446223)
+- GitHub: [@braingenius2](https://github.com/braingenius2)
+- Twitter: [@twitterhandle](https://twitter.com/braingenius2)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/fortune-uzodinma-8943b2136/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -167,8 +168,8 @@ Example:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **website with navigation**
-- [ ] **Adaptative colors**
+- [ ] **Dynamic background images**
+- [ ] **Newsletter subscription form**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -178,7 +179,7 @@ Example:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/beteland123/Awesome-books-with-ES6/issues).
+Feel free to check the [issues page](../../issues/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -194,7 +195,6 @@ If you like this project please drop a review or hit me up for job opportunities
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-
 I would like to thank myself and Microverse!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -203,5 +203,5 @@ I would like to thank myself and Microverse!
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://github.com/beteland123/Awesome-books-with-ES6/blob/main/LICENSE) licensed.
+This project is [MIT](./LICENSE.md) licensed.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

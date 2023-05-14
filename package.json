@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "<a name=\"readme-top\"></a>",
   "private": true,
+  "homepage": "https://braingenius2.github.io/To-Do-List/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
     "start": "webpack serve --open --hot",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "build": "webpack"
   },
   "keywords": [],
@@ -18,6 +21,7 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.27.5",
+    "gh-pages": "^5.0.0",
     "hint": "^7.1.8",
     "html-webpack-plugin": "^5.5.1",
     "style-loader": "^3.3.2",
