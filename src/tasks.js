@@ -9,7 +9,7 @@ export default class Tasks {
     const tasksContainer = document.querySelector('.tasks');
     tasksContainer.innerHTML = '';
     this.tasks.forEach((task) => {
-      let li = document.createElement('li');
+      const li = document.createElement('li');
       li.classList.add('task');
       li.innerHTML = `
         <input type="checkbox" data-index="${task.index}" ${task.completed ? 'checked' : ''}>
@@ -49,7 +49,7 @@ export default class Tasks {
       this.renderTasks();
     });
   }
-  
+
   addTask(description) {
     const task = {
       description,
@@ -71,7 +71,7 @@ export default class Tasks {
     deleteIcon.style.display = 'block';
     const moreVert = li.querySelector('.more-vert');
     moreVert.style.display = 'none';
-  
+
     descriptionElement.contentEditable = true;
     const originalDescription = descriptionElement.textContent;
     descriptionElement.addEventListener('keydown', (event) => {
@@ -97,7 +97,7 @@ export default class Tasks {
         moreVert.style.display = 'block';
       }
     });
-  
+
     descriptionElement.addEventListener('blur', () => {
       const newDescription = descriptionElement.textContent.trim();
       if (newDescription && newDescription !== originalDescription) {
@@ -112,8 +112,6 @@ export default class Tasks {
       moreVert.style.display = 'block';
     });
   }
-  
-  
 
   toggleTaskCompletion(index) {
     const task = this.tasks.find((task) => task.index === index);
